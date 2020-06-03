@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Clinica|Web</title>
+    </h:head>
+    <h:body style="padding-top: 50px; padding-bottom: 20px;">
+        <b:navBar brand="Clinica|Web" brandHref="index.xhtml" inverse="true" fixed="top">
+            <b:navbarLinks>
+                <b:dropMenu value="Perfil">
+                    <b:navLink value="Login" href="index.xhtml"></b:navLink>
+                </b:dropMenu>
+                <b:navLink value="Sobre" href="#"></b:navLink>
+                <b:navLink value="Contato" href="#"></b:navLink>
+            </b:navbarLinks>
+            <h:form styleClass="navbar-form navbar-right">
+                <div class="form-group">
+                    <font color="black">#{usuarioBeans.login}</font>
+                </div>
+            </h:form>
+        </b:navBar>
+        <b:jumbotron>
+            <center>
+                <h2>Sistema de clínica</h2>
+            </center>
+            <h:form>
+                <b:messages/>
+                <b:row>
+                    <b:column span="4" offset="4">
+                        <b:inputText label="Login" value="#{usuarioBean.login}" placeholder="Insira o login" required="true" requiredMessage="Insira o login" />
+                        <b:inputSecret label="Senha" value="#{usuarioBean.senha}" required="true" requiredMessage="Insira a senha" placeholder="Insira a senha..." />
+                    </b:column>
+                </b:row>
+                <center>
+                    <b:panelGrid columns="2" span="4" offset="4">
+                        <b:commandButton value="Acessar" action="#{usuarioBean.logar()}" style="width:150px"/>
+                        <b:commandButton value="Cadastrar" action="#{usuarioBean.cadastrar()}" style="width:150px"/>
+                </b:panelGrid>
+                </center>
+            </h:form>
+            <ui:insert name="principal"></ui:insert>
+        </b:jumbotron>      
+    </h:body>
+</html>
+

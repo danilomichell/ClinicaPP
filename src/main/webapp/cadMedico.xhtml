@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Clinica|Web</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./WEB-INF/template/modelo.xhtml">
+            <ui:define name="principal">
+                <h:form>
+                    <b:messages/>
+                    <b:panelGrid columns="2" span="12">
+                        <b:inputText value="#{pacienteBean.codigo}" label="CRM" placeholder="Insira o CRM do médico" required="true" requiredMessage="Insira o código"/>
+                        <b:inputText value="#{pacienteBean.nome}" label="Nome" placeholder="Insira o nome do médico" required="true" requiredMessage="Insira o nome"/>
+                        <b:inputText value="#{pacienteBean.email}" label="Email" placeholder="Insira o email do médico" required="true" requiredMessage="Insira o email"/>
+                        <b:inputText value="#{pacienteBean.telefone}" label="Telefone" placeholder="Insira o telefone" mask="(99)99999-9999" required="true" requiredMessage="Insira o telefone"/>
+                    </b:panelGrid>
+                    <p />
+                    <b:commandButton action="#{pacienteBean.cadastrar()}" value="Cadastrar paciente" style="width:150px"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
