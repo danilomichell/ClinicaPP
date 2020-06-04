@@ -4,14 +4,27 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import infra.Usuario;
 import infra.TesteJPA;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 @ManagedBean
 @SessionScoped
 public class UsuarioBean {
 
     private String login, senha;
+    private Usuario user = new Usuario();
 
     public UsuarioBean() {
+    }
+
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
     }
 
     public String getLogin() {
@@ -31,13 +44,18 @@ public class UsuarioBean {
     }
 
     public String cadastrar() {
-        UsuarioBean user = new UsuarioBean();
-        user.setLogin(this.login);
-        user.setSenha(this.senha);
-        TesteJPA.cadastrar(user);
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("puc");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction et = em.getTransaction();
+        et.begin();
+        em.persist(user);
+        et.commit();
+        em.close();
+        emf.close();
         return "dashboard";
     }
-    public String logar(){
+
+    public String logar() {
         return "dashboard";
     }
 }

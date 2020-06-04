@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      dir="ltr" >
+    <h:head>
+        <title>Clinica|Web - PP</title>
+        <meta name="author" content="Fabio Gomes Rocha" />
+    </h:head>
+    <h:body style="padding-top: 50px; padding-bottom: 20px;">
+        <ui:composition template="./WEB-INF/template/modelo.xhtml">
+            <ui:define name="principal">
+                O Paciente #{pacienteBeans.p.nome} foi cadastrado com sucesso!!!
+                <h:form>
+                    <b:dataTable 
+                        value="#{pacienteBeans.pacientes}"
+                        var="paciente"
+                        excel="true"
+                        csv="true"
+                        pdf="true"
+                        print="true">
+                        <b:dataTableColumn value="#{paciente.id}" order="asc"/>
+                        <b:dataTableColumn value="#{paciente.nome}" />
+                        <b:dataTableColumn value="#{paciente.telefone}" />
+                        <b:dataTableColumn value="#{paciente.celular}" />
+                        <b:dataTableColumn value="#{paciente.email}" />
+                        <b:dataTableColumn value="#{paciente.endereco}" />
+                        <b:dataTableColumn value="#{paciente.bairro}" />
+                        <b:dataTableColumn value="#{paciente.cidade}" />
+
+                    </b:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

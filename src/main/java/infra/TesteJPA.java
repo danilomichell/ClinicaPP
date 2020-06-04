@@ -12,12 +12,9 @@ public class TesteJPA {
 
     }
 
-    public static void cadastrar(UsuarioBean userBean) {
+    public static void cadastrar(Usuario user) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("puc");
         EntityManager em = emf.createEntityManager();
-        Usuario user = new Usuario();
-        user.setLogin(userBean.getLogin());
-        user.setSenha(userBean.getSenha());
         EntityTransaction et = em.getTransaction();
         et.begin();
         em.persist(user);
