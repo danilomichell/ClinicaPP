@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Sistema|Escola</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./WEB-INF/template/modelo.xhtml">
+            <ui:define name="principal">
+                <h:form>
+                    <b:dataTable 
+                        value="#{professorBeans.professor}"
+                        var="professor"
+                        excel="true"
+                        csv="true"
+                        pdf="true"
+                        print="true">
+                        <b:dataTableColumn value="#{professor.id}"  order="asc" label="ID" />
+                        <b:dataTableColumn value="#{professor.nome}" />
+                        <b:dataTableColumn value="#{professor.rg}" />
+                        <b:dataTableColumn value="#{professor.cpf}" />
+                        <b:dataTableColumn value="#{professor.salariobruto}" />
+                        <b:dataTableColumn value="#{professor.salarioliquido}" />
+                        <b:dataTableColumn value="#{professor.inss}" />
+                        <b:dataTableColumn value="#{professor.irrf}" />
+                        <b:dataTableColumn value="#{professor.disciplina}" />
+                        <b:dataTableColumn value="#{professor.areaInteresse}" />
+                    </b:dataTable>
+                    <b:inputText label="Busca por nome" value="#{professorBeans.p.nome}"/>
+                    <b:commandButton value="Consultar" action="#{professorBeans.consultarPorNome(nome)}"/>
+                    <b:dataTable 
+                        value="#{professorBeans.professorNome}"
+                        var="professor"
+                        excel="true"
+                        csv="true"
+                        pdf="true"
+                        print="true">
+                        <b:dataTableColumn value="#{professor.id}"  order="asc" label="ID" />
+                        <b:dataTableColumn value="#{professor.nome}" />
+                        <b:dataTableColumn value="#{professor.rg}" />
+                        <b:dataTableColumn value="#{professor.cpf}" />
+                        <b:dataTableColumn value="#{professor.salariobruto}" />
+                        <b:dataTableColumn value="#{professor.salarioliquido}" />
+                        <b:dataTableColumn value="#{professor.inss}" />
+                        <b:dataTableColumn value="#{professor.irrf}" />
+                        <b:dataTableColumn value="#{professor.disciplina}" />
+                        <b:dataTableColumn value="#{professor.areaInteresse}" />           
+                    </b:dataTable>
+
+                    <b:inputText label="Busca por ID" value="#{professorBeans.p.id}"/>
+
+                    <b:commandButton value="Consultar" action="#{professorBeans.consultarPorId(id)}"/>
+                    <b:dataTable 
+                        value="#{professorBeans.professorId}"
+                        var="professor"
+                        excel="true"
+                        csv="true"
+                        pdf="true"
+                        print="true">
+                        <b:dataTableColumn value="#{professor.id}"  order="asc" label="ID" />
+                        <b:dataTableColumn value="#{professor.nome}" />
+                        <b:dataTableColumn value="#{professor.rg}" />
+                        <b:dataTableColumn value="#{professor.cpf}" />
+                        <b:dataTableColumn value="#{professor.salariobruto}" />
+                        <b:dataTableColumn value="#{professor.salarioliquido}" />
+                        <b:dataTableColumn value="#{professor.inss}" />
+                        <b:dataTableColumn value="#{professor.irrf}" />
+                        <b:dataTableColumn value="#{professor.disciplina}" />
+                        <b:dataTableColumn value="#{professor.areaInteresse}" />                 
+                    </b:dataTable>
+                    
+                    <b:inputText label="Busca por disciplina" value="#{professorBeans.p.disciplina}"/>
+                    <b:commandButton value="Consultar" action="#{professorBeans.consultarPorDisciplina(disciplina)}"/>
+                    <b:dataTable 
+                        value="#{professorBeans.professorDisciplina}"
+                        var="professor"
+                        excel="true"
+                        csv="true"
+                        pdf="true"
+                        print="true">
+                        <b:dataTableColumn value="#{professor.id}"  order="asc" label="ID" />
+                        <b:dataTableColumn value="#{professor.nome}" />
+                        <b:dataTableColumn value="#{professor.rg}" />
+                        <b:dataTableColumn value="#{professor.cpf}" />
+                        <b:dataTableColumn value="#{professor.salariobruto}" />
+                        <b:dataTableColumn value="#{professor.salarioliquido}" />
+                        <b:dataTableColumn value="#{professor.inss}" />
+                        <b:dataTableColumn value="#{professor.irrf}" />
+                        <b:dataTableColumn value="#{professor.disciplina}" />
+                        <b:dataTableColumn value="#{professor.areaInteresse}" />           
+                    </b:dataTable>
+
+                    <b:inputText label="Busca por area interesse" value="#{professorBeans.p.areaInteresse}"/>
+
+                    <b:commandButton value="Consultar" action="#{professorBeans.consultarPorAreaInteresse(areaInteresse)}"/>
+                    <b:dataTable 
+                        value="#{professorBeans.professorAreaInteresse}"
+                        var="professor"
+                        excel="true"
+                        csv="true"
+                        pdf="true"
+                        print="true">
+                        <b:dataTableColumn value="#{professor.id}"  order="asc" label="ID" />
+                        <b:dataTableColumn value="#{professor.nome}" />
+                        <b:dataTableColumn value="#{professor.rg}" />
+                        <b:dataTableColumn value="#{professor.cpf}" />
+                        <b:dataTableColumn value="#{professor.salariobruto}" />
+                        <b:dataTableColumn value="#{professor.salarioliquido}" />
+                        <b:dataTableColumn value="#{professor.inss}" />
+                        <b:dataTableColumn value="#{professor.irrf}" />
+                        <b:dataTableColumn value="#{professor.disciplina}" />
+                        <b:dataTableColumn value="#{professor.areaInteresse}" />                 
+                    </b:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

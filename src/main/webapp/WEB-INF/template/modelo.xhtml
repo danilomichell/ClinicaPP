@@ -10,16 +10,18 @@
     <h:body style="padding-top: 50px; padding-bottom: 20px;">
         <b:navBar brand="Clinica|Web" brandHref="index.xhtml" inverse="true" fixed="top">
             <b:navbarLinks>
-                <b:dropMenu value="Cadastros">
-                    <b:navLink value="Paciente" href="cadPaciente.xhtml"></b:navLink>
-                    <b:navLink value="Médico" href="cadMedico.xhtml"></b:navLink>
-                    <b:navLink value="Atendente" href="cadAtendente.xhtml"></b:navLink>
+                <b:dropMenu value="Cadastros">   
+                    <b:navLink value="Curso" href="cadCurso.xhtml"></b:navLink>
+                    <b:navLink value="Professor" href="cadProfessor.xhtml"></b:navLink>       
+                    <b:navLink value="Aluno" href="cadAluno.xhtml"></b:navLink>
+                    <b:navLink value="Funcionario" href="cadFuncionario.xhtml"></b:navLink>
                 </b:dropMenu>
 
-                <b:dropMenu value="Relatórios">
-                    <b:navLink value="Paciente" href="listPaciente.xhtml"></b:navLink>
-                    <b:navLink value="Medico" href="#"></b:navLink>
-                    <b:navLink value="FolhaPagamento" href="FolhaPagamento.xhtml"></b:navLink>
+                <b:dropMenu value="Consultas">
+                    <b:navLink value="Curso" href="listCurso.xhtml"></b:navLink>
+                    <b:navLink value="Professor" href="listProfessor.xhtml"></b:navLink>
+                    <b:navLink value="Aluno" href="listAluno.xhtml"></b:navLink>
+                    <b:navLink value="Funcionario" href="listFuncionario.xhtml"></b:navLink>
                 </b:dropMenu>
 
                 <b:dropMenu value="Perfil">
@@ -36,7 +38,7 @@
             </h:form>
         </b:navBar>
         <b:jumbotron>
-            <h2>Sistema de clínica</h2>
+            <h2>Sistema de escola</h2>
             <ui:insert name="principal"></ui:insert>
         </b:jumbotron>      
         <b:container>

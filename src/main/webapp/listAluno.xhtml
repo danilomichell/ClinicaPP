@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Sistema|Escola</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./WEB-INF/template/modelo.xhtml">
+            <ui:define name="principal">
+                <h:form>
+                    <b:dataTable 
+                        value="#{alunoBeans.alunos}"
+                        var="aluno"
+                        excel="true"
+                        csv="true"
+                        pdf="true"
+                        print="true">
+                        <b:dataTableColumn value="#{aluno.idaluno}"  order="asc" label="ID" />
+                        <b:dataTableColumn value="#{aluno.nome}" />
+                        <b:dataTableColumn value="#{aluno.rg}" />
+                        <b:dataTableColumn value="#{aluno.cpf}" />
+                        <b:dataTableColumn value="#{aluno.dataNascimento}" />
+                        <b:dataTableColumn value="#{aluno.sexo}" />
+                        <b:dataTableColumn value="#{aluno.nota1}" />
+                        <b:dataTableColumn value="#{aluno.nota2}" />
+                        <b:dataTableColumn value="#{aluno.nota3}" />
+                        <b:dataTableColumn value="#{aluno.nota4}" />
+                        <b:dataTableColumn value="#{aluno.notaFinal}" />
+                        <b:dataTableColumn value="#{aluno.status}" />
+                        <b:dataTableColumn value="#{aluno.descricao}" />            
+                    </b:dataTable>
+                    <b:inputText label="Busca por nome" value="#{alunoBeans.a.nome}"/>
+                    <b:commandButton value="Consultar" action="#{alunoBeans.consultarPorNome(nome)}"/>
+                    <b:dataTable 
+                        value="#{alunoBeans.alunoNome}"
+                        var="aluno"
+                        excel="true"
+                        csv="true"
+                        pdf="true"
+                        print="true">
+                        <b:dataTableColumn value="#{aluno.idaluno}"  order="asc" label="ID" />
+                        <b:dataTableColumn value="#{aluno.nome}" />
+                        <b:dataTableColumn value="#{aluno.rg}" />
+                        <b:dataTableColumn value="#{aluno.cpf}" />
+                        <b:dataTableColumn value="#{aluno.dataNascimento}" />
+                        <b:dataTableColumn value="#{aluno.sexo}" />
+                        <b:dataTableColumn value="#{aluno.nota1}" />
+                        <b:dataTableColumn value="#{aluno.nota2}" />
+                        <b:dataTableColumn value="#{aluno.nota3}" />
+                        <b:dataTableColumn value="#{aluno.nota4}" />
+                        <b:dataTableColumn value="#{aluno.notaFinal}" />
+                        <b:dataTableColumn value="#{aluno.status}" />
+                        <b:dataTableColumn value="#{aluno.descricao}" />                     
+                    </b:dataTable>
+
+                    <b:inputText label="Busca por CPF" mask="999.999.999-99" value="#{alunoBeans.a.cpf}"/>
+
+                    <b:commandButton value="Consultar" action="#{alunoBeans.consultarPorCpf(cpf)}"/>
+                    <b:dataTable 
+                        value="#{alunoBeans.alunoCpf}"
+                        var="aluno"
+                        excel="true"
+                        csv="true"
+                        pdf="true"
+                        print="true">
+                        <b:dataTableColumn value="#{aluno.idaluno}"  order="asc" label="ID" />
+                        <b:dataTableColumn value="#{aluno.nome}" />
+                        <b:dataTableColumn value="#{aluno.rg}" />
+                        <b:dataTableColumn value="#{aluno.cpf}" />
+                        <b:dataTableColumn value="#{aluno.dataNascimento}" />
+                        <b:dataTableColumn value="#{aluno.sexo}" />
+                        <b:dataTableColumn value="#{aluno.nota1}" />
+                        <b:dataTableColumn value="#{aluno.nota2}" />
+                        <b:dataTableColumn value="#{aluno.nota3}" />
+                        <b:dataTableColumn value="#{aluno.nota4}" />
+                        <b:dataTableColumn value="#{aluno.notaFinal}" />
+                        <b:dataTableColumn value="#{aluno.status}" />
+                        <b:dataTableColumn value="#{aluno.descricao}" />                     
+                    </b:dataTable>
+                    
+                    <b:inputText label="Busca por Data de nascimento" mask="99/99/9999" value="#{alunoBeans.a.dataNascimento}"/>
+
+                    <b:commandButton value="Consultar" action="#{alunoBeans.consultarPorDataNascimento(dataNascimento)}"/>
+                    <b:dataTable 
+                        value="#{alunoBeans.alunoDataNascimento}"
+                        var="aluno"
+                        excel="true"
+                        csv="true"
+                        pdf="true"
+                        print="true">
+                        <b:dataTableColumn value="#{aluno.idaluno}"  order="asc" label="ID" />
+                        <b:dataTableColumn value="#{aluno.nome}" />
+                        <b:dataTableColumn value="#{aluno.rg}" />
+                        <b:dataTableColumn value="#{aluno.cpf}" />
+                        <b:dataTableColumn value="#{aluno.dataNascimento}" />
+                        <b:dataTableColumn value="#{aluno.sexo}" />
+                        <b:dataTableColumn value="#{aluno.nota1}" />
+                        <b:dataTableColumn value="#{aluno.nota2}" />
+                        <b:dataTableColumn value="#{aluno.nota3}" />
+                        <b:dataTableColumn value="#{aluno.nota4}" />
+                        <b:dataTableColumn value="#{aluno.notaFinal}" />
+                        <b:dataTableColumn value="#{aluno.status}" />
+                        <b:dataTableColumn value="#{aluno.descricao}" />                     
+                    </b:dataTable>
+                    
+                    <b:inputText label="Busca por Status" value="#{alunoBeans.a.status}"/>
+
+                    <b:commandButton value="Consultar" action="#{alunoBeans.consultarPorStatus(status)}"/>
+                    <b:dataTable 
+                        value="#{alunoBeans.alunoStatus}"
+                        var="aluno"
+                        excel="true"
+                        csv="true"
+                        pdf="true"
+                        print="true">
+                        <b:dataTableColumn value="#{aluno.idaluno}"  order="asc" label="ID" />
+                        <b:dataTableColumn value="#{aluno.nome}" />
+                        <b:dataTableColumn value="#{aluno.rg}" />
+                        <b:dataTableColumn value="#{aluno.cpf}" />
+                        <b:dataTableColumn value="#{aluno.dataNascimento}" />
+                        <b:dataTableColumn value="#{aluno.sexo}" />
+                        <b:dataTableColumn value="#{aluno.nota1}" />
+                        <b:dataTableColumn value="#{aluno.nota2}" />
+                        <b:dataTableColumn value="#{aluno.nota3}" />
+                        <b:dataTableColumn value="#{aluno.nota4}" />
+                        <b:dataTableColumn value="#{aluno.notaFinal}" />
+                        <b:dataTableColumn value="#{aluno.status}" />
+                        <b:dataTableColumn value="#{aluno.descricao}" />                     
+                    </b:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

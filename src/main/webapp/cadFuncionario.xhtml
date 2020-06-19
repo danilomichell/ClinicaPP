@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Sistema|Escola</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./WEB-INF/template/modelo.xhtml">
+            <ui:define name="principal">
+                <h3>Cadastro de Funcionario</h3>
+                <h:form>
+                    <b:panelGrid columns="1">
+                        <b:inputText value="#{funcionarioBeans.f.nome}" placeholder="Entre com o nome do funcionario" label="Nome do funcionario" 
+                                     required="true" requiredMessage="Digita a o nome zé...." /> 
+                        <b:inputText value="#{funcionarioBeans.f.salariobruto}" placeholder="Entre com o salario do funcionario" label="Salario do funcionario" 
+                                     required="true" requiredMessage="Digita a o salario" /> 
+                        <b:inputText value="#{funcionarioBeans.f.rg}" placeholder="Entre com o RG do funcionario" 
+                                     label="RG do funcionario" required="true" 
+                                     required-message="O RG é um campo obrigatório" />
+
+                        <b:inputText value="#{funcionarioBeans.f.cpf}" placeholder="Entre com o CPF do funcionario"
+                                     mask="999.999.999-99" label="CPF do funcionario" 
+                                     required="true" required-message="O CPF é um campo obrigatório" />
+                        <b:inputText value="#{funcionarioBeans.f.cargo}" placeholder="Entre com o cargo do funcionario" label="Cargo do funcionario" 
+                                     required="true" requiredMessage="Digita a o cargo" />
+                        <b:commandButton value="Salvar" action="#{funcionarioBeans.salvarPaciente()}" />
+                    </b:panelGrid>
+                </h:form>
+                O funcionario #{funcionarioBeans.f.nome} foi cadastrado com sucesso!!!
+                <h:form>
+                    <b:dataTable 
+                        value="#{funcionarioBeans.funcionarios}"
+                        var="funcionario"
+                        excel="true"
+                        csv="true"
+                        pdf="true"
+                        print="true">
+                        <b:dataTableColumn value="#{funcionario.id}"  order="asc" label="ID" />
+                        <b:dataTableColumn value="#{funcionario.nome}" />
+                        <b:dataTableColumn value="#{funcionario.cargo}" />
+                        <b:dataTableColumn value="#{funcionario.rg}" />
+                        <b:dataTableColumn value="#{funcionario.cpf}" />
+                        <b:dataTableColumn value="#{funcionario.salariobruto}" />
+                        <b:dataTableColumn value="#{funcionario.salarioliquido}" />
+                        <b:dataTableColumn value="#{funcionario.inss}" />
+                        <b:dataTableColumn value="#{funcionario.irrf}" />
+                        <b:dataTableColumn>
+                            <f:facet name="header"> Ações </f:facet>
+                            <h:commandLink action="#{funcionarioBeans.excluir(funcionario)}">
+                                Excluir</h:commandLink>
+                            |
+                            <h:commandLink action="#{funcionarioBeans.selecionar(funcionario)}">
+                                Selecionar</h:commandLink>
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

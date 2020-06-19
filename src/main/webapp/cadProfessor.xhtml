@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Sistema|Escola</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./WEB-INF/template/modelo.xhtml">
+            <ui:define name="principal">
+                <h3>Cadastro de Professor</h3>
+                <h:form>
+                    <b:panelGrid columns="1">
+                        <b:inputText value="#{professorBeans.p.nome}" placeholder="Entre com o nome do professor" label="Nome do professor" 
+                                     required="true" requiredMessage="Digita a o nome zé...." /> 
+                        <b:inputText value="#{professorBeans.p.salariobruto}" placeholder="Entre com o salario do professor" label="Salario do professor" 
+                                     required="true" requiredMessage="Digita a o salario" /> 
+                        <b:inputText value="#{professorBeans.p.rg}" placeholder="Entre com o RG do professor" 
+                                     label="RG do professor" required="true" 
+                                     required-message="O RG é um campo obrigatório" />
+
+                        <b:inputText value="#{professorBeans.p.cpf}" placeholder="Entre com o CPF do professor"
+                                     mask="999.999.999-99" label="CPF do professor" 
+                                     required="true" required-message="O CPF é um campo obrigatório" />
+                        <b:inputText value="#{professorBeans.p.disciplina}" placeholder="Entre com a disciplina do professor" label="Disciplina do professor" 
+                                     required="true" requiredMessage="Digita a disciplina" />
+                        <b:inputText value="#{professorBeans.p.areaInteresse}" placeholder="Entre com a area interesse do professor" label="Area interesse do professor" 
+                                     required="true" requiredMessage="Digita a area interesse" />
+                        <b:commandButton value="Salvar" action="#{professorBeans.salvarPaciente()}" />
+                    </b:panelGrid>
+                </h:form>
+                O professor #{professorBeans.p.nome} foi cadastrado com sucesso!!!
+                <h:form>
+                    <b:dataTable 
+                        value="#{professorBeans.professor}"
+                        var="professor"
+                        excel="true"
+                        csv="true"
+                        pdf="true"
+                        print="true">
+                        <b:dataTableColumn value="#{professor.id}"  order="asc" label="ID" />
+                        <b:dataTableColumn value="#{professor.nome}" />
+                        <b:dataTableColumn value="#{professor.rg}" />
+                        <b:dataTableColumn value="#{professor.cpf}" />
+                        <b:dataTableColumn value="#{professor.salariobruto}" />
+                        <b:dataTableColumn value="#{professor.salarioliquido}" />
+                        <b:dataTableColumn value="#{professor.inss}" />
+                        <b:dataTableColumn value="#{professor.irrf}" />
+                        <b:dataTableColumn value="#{professor.disciplina}" />
+                        <b:dataTableColumn value="#{professor.areaInteresse}" />
+                        <b:dataTableColumn>
+                            <f:facet name="header"> Ações </f:facet>
+                            <h:commandLink action="#{professorBeans.excluir(professor)}">
+                                Excluir</h:commandLink>
+                            |
+                            <h:commandLink action="#{professorBeans.selecionar(professor)}">
+                                Selecionar</h:commandLink>
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

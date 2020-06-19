@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Sistema|Escola</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./WEB-INF/template/modelo.xhtml">
+            <ui:define name="principal">
+                <h3>Cadastro de Aluno</h3>
+                <h:form>
+                    <b:panelGrid columns="1">
+                        <b:inputText value="#{alunoBeans.a.nome}" placeholder="Entre com o nome do aluno" label="Nome do aluno" 
+                                     required="true" requiredMessage="Digita a o nome zé...." />  
+                        <b:inputText value="#{alunoBeans.a.rg}" placeholder="Entre com o RG do aluno" 
+                                     label="RG do aluno" required="true" 
+                                     required-message="O RG é um campo obrigatório" />
+                        <b:inputText value="#{alunoBeans.a.cpf}" placeholder="Entre com o CPF do aluno"
+                                     mask="999.999.999-99" label="CPF do aluno" 
+                                     required="true" required-message="O CPF é um campo obrigatório" />                       
+                    </b:panelGrid>
+                    <b:panelGrid columns="2">
+                        <b:inputText mask="99/99/9999" label="Data de nascimento" value="#{alunoBeans.a.dataNascimento}"/> 
+                        <b:formGroup>
+                            <b:selectOneMenu value="#{alunoBeans.a.sexo}" select2="true" required="true" label="Seu gênero:">
+                                <f:selectItem itemLabel="(Selecione)" itemValue="" />
+                                <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                                <f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+                            </b:selectOneMenu>
+                        </b:formGroup>
+                    </b:panelGrid>
+                    <b:panelGrid columns="2">
+                    <b:inputText value="#{alunoBeans.a.nota1}" placeholder="Entre com a nota 1" label="Nata 1" 
+                                     required="true" requiredMessage="Digite a nota 1" /> 
+                    <b:inputText value="#{alunoBeans.a.nota2}" placeholder="Entre com a nota 2" label="Nata 2" 
+                                     required="true" requiredMessage="Digite a nota 2" /> 
+                    <b:inputText value="#{alunoBeans.a.nota3}" placeholder="Entre com a nota 3" label="Nata 3" 
+                                     required="true" requiredMessage="Digite a nota 3" /> 
+                    <b:inputText value="#{alunoBeans.a.nota4}" placeholder="Entre com a nota 4" label="Nata 4" 
+                                     required="true" requiredMessage="Digite a nota 4" />                  
+                    </b:panelGrid>
+                    <b:inputText value="#{alunoBeans.a.descricao}" placeholder="Entre com a descrição" label="Descrição"/>
+                    <b:commandButton value="Salvar" action="#{alunoBeans.salvar()}" />
+                </h:form>
+                O aluno #{alunoBeans.a.nome} foi cadastrado com sucesso!!!
+                <h:form>
+                    <b:dataTable 
+                        value="#{alunoBeans.alunos}"
+                        var="aluno"
+                        excel="true"
+                        csv="true"
+                        pdf="true"
+                        print="true">
+                        <b:dataTableColumn value="#{aluno.idaluno}"  order="asc" label="ID" />
+                        <b:dataTableColumn value="#{aluno.nome}" />
+                        <b:dataTableColumn value="#{aluno.rg}" />
+                        <b:dataTableColumn value="#{aluno.cpf}" />
+                        <b:dataTableColumn value="#{aluno.dataNascimento}" />
+                        <b:dataTableColumn value="#{aluno.sexo}" />
+                        <b:dataTableColumn value="#{aluno.nota1}" />
+                        <b:dataTableColumn value="#{aluno.nota2}" />
+                        <b:dataTableColumn value="#{aluno.nota3}" />
+                        <b:dataTableColumn value="#{aluno.nota4}" />
+                        <b:dataTableColumn value="#{aluno.notaFinal}" />
+                        <b:dataTableColumn value="#{aluno.status}" />
+                        <b:dataTableColumn value="#{aluno.descricao}" />
+                        <b:dataTableColumn>
+                            <f:facet name="header"> Ações </f:facet>
+                            <h:commandLink action="#{alunoBeans.excluir(aluno)}">
+                                Excluir</h:commandLink>
+                            |
+                            <h:commandLink action="#{alunoBeans.selecionar(aluno)}">
+                                Selecionar</h:commandLink>
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
